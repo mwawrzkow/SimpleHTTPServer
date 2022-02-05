@@ -1,0 +1,79 @@
+/* fading background */
+
+html {
+    background: #000;
+    background: linear-gradient(to bottom, #000 0%, #000 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* parent div has to have border */
+
+div.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    /* make it slowly glowing */
+    animation: glow 1s ease-in-out infinite;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
+    }
+}
+
+div.centered div.welcome {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+}
+
+div.centered div.picture {
+    margin: 0 auto;
+    /* make it slowly glowing */
+    animation: glow 1s ease-in-out infinite;
+    /* center it's content using grid */
+    display: grid;
+    place-items: center;
+    place-content: center;
+    overflow: hidden;
+}
+
+div.centered div.picture img {
+    /* center vertically in div.picture */
+    display: block;
+    margin: 0 auto;
+    /* make it slowly glowing  and animate border radious and rotate clockwise*/
+    animation: glow 1s ease-in-out infinite, border-radius 10s ease-in-out infinite, rotate 10s ease-in-out infinite;
+}
+
+@keyframes border-radius {
+    from {
+        border-radius: 0%;
+    }
+    to {
+        border-radius: 100%;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
